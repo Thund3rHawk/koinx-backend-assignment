@@ -51,7 +51,7 @@ export async function calculateStandardDeviation(coin: string): Promise<number |
   
 
 export function scheduleFetchCryptoJob(cron: any) {
-    cron.schedule('0 */2 * * *', () => {
+    cron.schedule('0 0-23/2 * * *', () => {      
         logger.info('Running cryptocurrency data fetch job');
         fetchAndStoreData();
     });
