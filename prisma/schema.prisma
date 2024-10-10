@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model CryptoData {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  coin               String
+  price_usd          Float
+  market_cap_usd     Float
+  percent_change_24h Float
+  updatedAt          DateTime @default(now())
+
+  @@index([coin])
+}
